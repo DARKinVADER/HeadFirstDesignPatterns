@@ -3,6 +3,16 @@
     public abstract class Beverage
     {
         protected string description = "Unknown";
+        public virtual Size Size { get; init; }
+
+        public Beverage()
+        {
+            this.Size = Size.Grande;
+        }
+        public Beverage(Size size)
+        {
+            Size = size;
+        }
 
         public virtual string GetDescription()
         {
@@ -11,56 +21,11 @@
 
         public abstract double Cost();
     }
+}
 
-    public class HouseBlend : Beverage
-    {
-        public HouseBlend()
-        {
-            description = "House Blend";
-        }
-
-        public override double Cost()
-        {
-            return 0.89;
-        }
-    }
-
-    public class DarkRoast : Beverage
-    {
-        public DarkRoast()
-        {
-            description = "Dark Roast";
-        }
-
-        public override double Cost()
-        {
-            return 0.99;
-        }
-    }
-
-    public class Decaf : Beverage
-    {
-        public Decaf()
-        {
-            description = "Decaf";
-        }
-
-        public override double Cost()
-        {
-            return 1.05;
-        }
-    }
-
-    public class Espresso : Beverage
-    {
-        public Espresso()
-        {
-            description = "Espresso";
-        }
-
-        public override double Cost()
-        {
-            return 1.99;
-        }
-    }
+public enum Size
+{
+    Tall = 0,
+    Grande = 1,
+    Venti = 2
 }

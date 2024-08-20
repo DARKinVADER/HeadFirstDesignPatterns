@@ -13,9 +13,12 @@ namespace Decorator.Decorators
             return _beverage.GetDescription() + ", Soy";
         }
 
-        public override double Cost()
+        public override double Cost() => Size switch
         {
-            return 0.15 + _beverage.Cost();
-        }
+            Size.Grande => 0.10 + _beverage.Cost(),
+            Size.Venti => 0.15 + _beverage.Cost(),
+            Size.Tall => 0.20 + _beverage.Cost(),
+            _ => _beverage.Cost(),
+        };
     }
 }
